@@ -12,21 +12,22 @@ class LongestWordGameController < ApplicationController
     t = URI.open("https://wagon-dictionary.herokuapp.com/#{params[:word]}")
     api_word = JSON.parse(t.string)
 
-    @real = false
-    count = 0
+    # @real = false
+    # count = 0
 
-    [params[:letters]].each do |r|
-      if (api_word['word'].upcase.count(r) >= [params[:letters]].count(r)) == true
-        count = count + 1
-      end
-    end
+    # it kept breaking
+    # [params[:letters]].each do |r|
+    #   if (api_word['word'].upcase.count(r) >= [params[:letters]].count(r)) == true
+    #     count = count + 1
+    #   end
+    # end
 
-    @real = true if count == api_word['word'].length
+    # @real = true if count == api_word['word'].length
 
     if api_word['found'] == true
       @score = api_word['length']
-      @message = "#{@real}, #{count}, #{api_word['word'].length}"
-    elsif api_word['found'] == false && @real == false
+      @message = 'Well done!'
+    elsif api_word['found'] == false
       @score = 0
       @message = 'Failed! Try again.'
     end
