@@ -1,0 +1,21 @@
+<h3><strong> ********* Welcome to the longest word-game! ********* </strong></h3>
+<p>
+  <br>
+  Here is your grid:
+  <br>
+  <%= @sample %>
+  <br><br>
+  <strong>*****************************************************</strong>
+
+  <br>
+  What is your longest word?
+  <br>
+
+  <form action="/results" method="post" data-turbo="false">
+    <input type="text" name=word value="<%=params[:word]%>">
+    <input type="submit" value="submit">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <%= hidden_field_tag 'letters', @sample%>
+  </form>
+
+</p>

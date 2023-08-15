@@ -3,4 +3,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+
+  get "/long_word_game", to:"longest_word_game#longestword"
+  # root to: 'longest_word_game#longestword'
+  post "/results", to:"longest_word_game#results"
 end
